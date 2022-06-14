@@ -24,7 +24,7 @@ body{
 }
 
 header{
-    display:inline-block;
+    display:flex;
     background-color: antiquewhite;
     grid-area: header;
 }
@@ -44,28 +44,26 @@ footer {
 
 nav {
     position: absolute;
-    display: none;
+    display: block;
     background-color: antiquewhite;
     height: 100%;
-    width: 20rem;
+    width: 0;
     overflow-y: scroll;
-
-
-
+    z-index: 100;
 }
 
 .plus___wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
-    width: 30px;
+    height: 2rem;
+    width: 2rem;
     border-radius: 50px;
     background-color: white;
 
     position: absolute;
     right: 10px;
-    bottom: 20px;
+    top: 20px;
     
     
 }
@@ -76,8 +74,49 @@ nav {
     justify-self: end;
 }
 
-.navbar---toggle {
-    display: block;
+.navbar---toggleLtoR {
+    animation: left-to-right 500ms linear forwards;
+
+}
+
+.navbar---toggleRtoL {
+    animation: right-to-left 500ms linear forwards;
+}
+
+@keyframes left-to-right {
+    0% {
+        width: 0;
+    }
+
+    33% {
+        width: 8rem;
+    }
+
+    66% {
+        width: 15rem;
+    }
+
+    100% {
+        width: 20rem;
+    }
+}
+
+@keyframes right-to-left {
+    0%{
+        width: 20rem;
+    }
+
+    33% {
+        width: 15rem;
+    }
+
+    66% {
+        width: 8rem;
+    }
+
+    100%{
+        width: 0rem;
+    }
 }
 
 .newproject___form {
@@ -95,3 +134,4 @@ nav {
     width: 200px;
     
 }
+
