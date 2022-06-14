@@ -5,36 +5,36 @@
 
 }
 
-html {
-
-    
+:root{
+    --boxShadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
-
-body{
+html {
     height: 100vh;
+    overflow: hidden;
+}
+body{
+    height: 100%;
+    width: 100vw;
     display: grid;
     grid-template-areas: "header header"
-                         "nav content"
+                         "content content"
                          "footer footer";
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 4rem 1fr 3rem;
 }
 
 header{
+    display:inline-block;
     background-color: antiquewhite;
     grid-area: header;
 }
 
-nav {
-    position: relative;
-    background-color: aliceblue;
-    grid-area: nav;
-}
-
 main {
+    display: flex;
     position: relative;
     background-color: silver;
     grid-area: content;
+
 }
 
 footer {
@@ -42,8 +42,16 @@ footer {
     grid-area: footer;
 }
 
-.test {
-    background-color: blue;
+nav {
+    position: absolute;
+    display: none;
+    background-color: antiquewhite;
+    height: 100%;
+    width: 20rem;
+    overflow-y: scroll;
+
+
+
 }
 
 .plus___wrapper {
@@ -54,6 +62,7 @@ footer {
     width: 30px;
     border-radius: 50px;
     background-color: white;
+
     position: absolute;
     right: 10px;
     bottom: 20px;
@@ -64,4 +73,25 @@ footer {
 .navbar__wrapper {
     padding: 1rem;
     margin: 0.5rem;
+    justify-self: end;
+}
+
+.navbar---toggle {
+    display: block;
+}
+
+.newproject___form {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+
+    display: none;
+    background-color: aliceblue;
+    justify-self: center;
+    align-self: center;
+    height: 200px;
+    width: 200px;
+    
 }
