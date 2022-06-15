@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca:wght@300&display=swap');
+
 *{
 
     margin: 0;
@@ -7,10 +9,23 @@
 
 :root{
     --boxShadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    --ucla-blue: #0a0c21f8;
+    --very-darkblue: hsla(232, 52%, 15%, 0.935);
+    --dark-desaturatedblue: hsl(244, 38%, 16%);
+    --soft-violet: hsla(277, 59%, 54%, 0.956);
+    --white: hsl(0, 0%, 100%);
+    --slightly-transparentgrey: rgba(147, 144, 144, 0.875);
+    --slightly-transparentwhite: hsla(0, 0%, 100%, 0.6);
+
+
 }
 html {
     height: 100vh;
     overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Lexend Deca', sans-serif;
+    color: var(--white)
+
 }
 body{
     height: 100%;
@@ -21,35 +36,38 @@ body{
                          "footer footer";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 4rem 1fr 3rem;
+    
+
 }
 
 header{
     display:flex;
-    background-color: antiquewhite;
+    background-color: var(--ucla-blue);
     grid-area: header;
+    box-shadow: var(--boxShadow);
 }
 
 main {
     display: flex;
     position: relative;
-    background-color: silver;
+    background-color: var(--very-darkblue);
     grid-area: content;
 
 }
 
 footer {
-    background-color: beige;
+    background-color: var(--ucla-blue);
     grid-area: footer;
 }
 
 nav {
     position: absolute;
     display: block;
-    background-color: antiquewhite;
+    background-color: var(--ucla-blue);
     height: 100%;
     width: 0;
     overflow-y: scroll;
-    z-index: 100;
+    z-index: 50;
 }
 
 .plus___wrapper {
@@ -57,9 +75,9 @@ nav {
     justify-content: center;
     align-items: center;
     height: 2rem;
-    width: 2rem;
-    border-radius: 50px;
-    background-color: white;
+    width: 3rem;
+    border-radius: 25px;
+    background-color: var(--soft-violet);
 
     position: absolute;
     right: 10px;
@@ -68,10 +86,21 @@ nav {
     
 }
 
+.close___wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50px;
+    background-color: var(--soft-violet);
+}
+
 .navbar__wrapper {
     padding: 1rem;
     margin: 0.5rem;
     justify-self: end;
+
 }
 
 .navbar---toggleLtoR {
@@ -81,6 +110,15 @@ nav {
 
 .navbar---toggleRtoL {
     animation: right-to-left 500ms linear forwards;
+}
+
+.background---blur {
+    filter: blur(5px);
+
+}
+.flex---wrapper{
+   display:flex;
+   flex-direction: column;
 }
 
 @keyframes left-to-right {
@@ -119,19 +157,92 @@ nav {
     }
 }
 
-.newproject___form {
-    position: absolute;
+.newform {
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
 
     display: none;
-    background-color: aliceblue;
+    background-color: var(--dark-desaturatedblue);
     justify-self: center;
-    align-self: center;
-    height: 200px;
-    width: 200px;
+    align-self:center;
+    width: 80%;
+
+    z-index: 100;
+
+    border-radius: 1rem;
+
     
+}
+
+form {
+    width: 100%;
+}
+
+.text-formatting{
+    text-align: start;
+    margin: 1em 0 1em 1.5rem;
+}
+
+.form___content{
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.8rem;
+}
+
+input, select {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    width: 90%;
+    height: 2rem;
+    background-color: transparent;
+    border-color: rgba(147, 144, 144, 0.875);
+    margin-top: 0.5rem;
+    color: var(--slightly-transparentgrey)
+    
+}
+
+.button___container {
+    margin: 1.5rem;
+    justify-content: space-between;
+}
+
+button {
+        display: inline-block;
+        border: none;
+        padding: 0.5rem 0.5rem;
+        margin: 0;
+        text-decoration: none;
+        background: var(--soft-violet);
+        color: #ffffff;
+        font-size: 0.8rem;
+        width: 48%;
+
+        border-radius: 20px;
+
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+}
+    
+.create {
+    color: var(--white);
+    background-color: var(--soft-violet);
+}
+
+.cancel {
+    color: var(--soft-violet);
+    background-color: var(--white);
+}
+
+@media only screen and (min-width: 365px) {
+    .newform{
+        width: 20rem;
+    }
 }
 
