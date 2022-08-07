@@ -7,7 +7,7 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/82c4d17290.js" crossorigin="anonymous"></script>
 
-<script defer src="indexfce5173d00185188bd4b.js"></script></head>
+<script defer src="indexd153c89097e2ed3401bf.js"></script></head>
 <body>
     <header>
         <div class="navbar__wrapper" id="navIcon">
@@ -25,12 +25,20 @@
             </div>
 
             <div class="nav___content">
-                Navigation 
+                <ul class = "nav___list">
+                    <li>Test1</li>
+                    <li>Test2</li>
+                    <li>Test3</li>
+                </ul>
             </div>
         </nav>
         <div class="main___content">
             <div class="tasks___body">
+                Content
+                <div class = "task">
 
+
+                </div>
             </div>
            
             <div class="plus___wrapper">
@@ -40,7 +48,7 @@
         </div>
 
         <div class="newform flex___wrapper" id = "projectForm">
-            <form class = "newproject___form" action="">
+            <form class = "newproject___form" name = "projectForm" action="">
                 <p class="form___heading text-formatting">
                     Add New Project
                 </p>
@@ -50,7 +58,7 @@
                 </div>
 
                 <div class="button___container">
-                    <button class = "create">Create</button>
+                    <button class = "create" type = "submit">Create</button>
                     <button class = "cancel">Cancel</button>
                 </div>
 
@@ -58,21 +66,21 @@
         </div>
 
         <div class="newform" id = "taskForm">
-            <form class = "newproject___form" action="">
+            <form class = "newproject___form" name = "taskForm" action="">
                 <p class="form___heading text-formatting">
                     Add New Task
                 </p>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-title">Title</label>
-                    <input type="text" id="task-title" name = "project-title" placeholder=" e.g Leetcode, Chores...">
+                    <input type="text" id="task-title" name = "task-title" placeholder=" e.g Leetcode, Chores...">
                 </div>
                 <div class = "form___content flex___wrapper text-formatting">
-                    <label for="task-description">Description</label>
-                    <input type="textarea" id="task-title" name = "project-title" placeholder=" e.g Leetcode, Chores...">
+                    <label for="task-description">Project Selection</label>
+                    <select name="project-list" id="project-list"></select>
                 </div>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-duedate">Due Date</label>
-                    <input type="date" id="task-duedate" name = "project-title">
+                    <input type="date" id="task-duedate" name = "task-duedate">
                 </div>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-priority">Priority</label>
