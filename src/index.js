@@ -1,4 +1,6 @@
+import { Project } from './modules/Project';
 import './styles.css';
+import { taskFactory } from './modules/Task';
 
 const navbarIcon = document.querySelector("#navIcon");
 const newprojectIcon = document.querySelector("#new-project");
@@ -29,7 +31,12 @@ newtaskIcon.addEventListener('click', ()=>{
 
 
 
+/*
 
+*/
 
-
-
+const sampleTask = taskFactory("test", "10-9-2022", "high");
+console.log(sampleTask);
+console.log(sampleTask.getTitle());
+sampleTask.setTitle("new task");
+console.log(sampleTask.getTitle());

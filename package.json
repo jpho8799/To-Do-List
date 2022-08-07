@@ -88,6 +88,7 @@
     "terser": "^5.14.0",
     "terser-webpack-plugin": "^5.3.3",
     "uri-js": "^4.4.1",
+    "uuid": "^8.3.2",
     "watchpack": "^2.4.0",
     "webpack-merge": "^5.8.0",
     "webpack-sources": "^3.2.3",
@@ -96,7 +97,6 @@
   },
   "devDependencies": {
     "css-loader": "^6.7.1",
-    "eslint": "^8.17.0",
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.52.3",
     "sass-loader": "^13.0.0",
