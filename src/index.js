@@ -5,6 +5,7 @@ import { taskFactory } from './modules/Task';
 const navbarIcon = document.querySelector("#navIcon");
 const newprojectIcon = document.querySelector("#new-project");
 const newtaskIcon = document.querySelector('#new-task');
+const cancelButton = document.querySelectorAll(".cancel");
 
 navbarIcon.addEventListener('click', ()=>{
     const navBar = document.querySelector('nav');
@@ -29,6 +30,13 @@ newtaskIcon.addEventListener('click', ()=>{
     taskForm.style.display = 'flex';
 })
 
+cancelButton.forEach(button =>{
+    button.addEventListener('click', ()=>{
+        console.log("clicked");
+        window.location.href = window.location.href;
+        return false;
+    })
+})
 
 
 /*

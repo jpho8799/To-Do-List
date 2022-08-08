@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from 'uuid'
 import { projectFactory } from './Project';
-const storageFactory = ()=>{
+const storageFactory = (()=>{
     const storageId = uuidv4();
     const projectList = [];
     const addProject = (project)=>{
@@ -29,6 +29,6 @@ const storageFactory = ()=>{
     return {
         projectList, addProject, editStorage, getProject, deleteProject, clearStorage
     }
-}
+})();
 
 export {storageFactory}

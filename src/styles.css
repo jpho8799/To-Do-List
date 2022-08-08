@@ -258,3 +258,7 @@ button {
     }
 }
 
+html {
+    visibility: visible;
+    opacity: 1;
+}

@@ -1,4 +1,6 @@
-import {Project } from "./Project";
+import {projectFactory } from "./Project";
+import { taskFactory } from "./Task";
+import {storageFactory} from "./Storage";
 
 function validateNewProject(){
     let projectTitle = document.forms["projectForm"]["project-title"].value;
@@ -6,8 +8,8 @@ function validateNewProject(){
         alert("Please fill out all values");
         return false;
     }else{
-       let newProject = new Project(projectTitle);
-       console.log(newProject);
+      const newProject = projectFactory(projectTitle);
+      storageFactory.addProject(newProject);
     }
 }
 
@@ -21,7 +23,10 @@ function validateNewTask(){
         alert('Please fill out all values');
         return;
     }else{
-        //createTask(projectList,title,dueDate,priority);
+        const newTask = taskFactory(title, dueDate, priority);
+        const project = storageFactory.getProject(projectList);
+        project.addTask(newTask);
+        storageFactory.editStorage(project);
     }
 }
 
