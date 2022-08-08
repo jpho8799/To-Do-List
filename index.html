@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>html {visibility: hidden; opacity: 0;}</style>
     <script src="https://kit.fontawesome.com/82c4d17290.js" crossorigin="anonymous"></script>
 
-<script defer src="indexd153c89097e2ed3401bf.js"></script></head>
+<script defer src="indexb998b0ae6e6f9b081026.js"></script></head>
 <body>
     <header>
         <div class="navbar__wrapper" id="navIcon">
@@ -26,7 +27,10 @@
 
             <div class="nav___content">
                 <ul class = "nav___list">
-                    <li>Test1</li>
+                    <li>
+                        <div>Test 1</div>
+                        
+                    </li>
                     <li>Test2</li>
                     <li>Test3</li>
                 </ul>
@@ -54,7 +58,7 @@
                 </p>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="project-title">Title</label>
-                    <input type="text" id="project-title" name = "project-title" placeholder=" e.g Leetcode, Chores...">
+                    <input required = "required" type="text" id="project-title" name = "project-title" placeholder=" e.g Leetcode, Chores...">
                 </div>
 
                 <div class="button___container">
@@ -72,11 +76,11 @@
                 </p>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-title">Title</label>
-                    <input type="text" id="task-title" name = "task-title" placeholder=" e.g Leetcode, Chores...">
+                    <input required = "required" type="text" id="task-title" name = "task-title" placeholder=" e.g Leetcode, Chores...">
                 </div>
                 <div class = "form___content flex___wrapper text-formatting">
-                    <label for="task-description">Project Selection</label>
-                    <select name="project-list" id="project-list"></select>
+                    <label for="project-list">Project Selection</label>
+                    <select required = "required" name="project-list" id="project-list"></select>
                 </div>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-duedate">Due Date</label>
@@ -84,7 +88,7 @@
                 </div>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-priority">Priority</label>
-                    <select name="task-priority" id="task-priority">
+                    <select required = "optional" name="task-priority" id="task-priority">
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
@@ -94,8 +98,8 @@
 
 
                 <div class="button___container">
-                    <button class = "create">Create</button>
-                    <button class = "cancel">Cancel</button>
+                    <button type = "submit" class = "create">Create</button>
+                    <button  class = "cancel">Cancel</button>
                 </div>
 
             </form>
