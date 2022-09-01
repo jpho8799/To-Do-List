@@ -5,7 +5,7 @@ import {storageFactory} from "./Storage";
 function validateForm(form){
     let formComplete = true;
     Array.from(form.elements).forEach(element=>{
-        if(element.tagName == 'INPUT'){
+        if(element.tagName == 'INPUT' || element.tagName == 'SELECT'){
             if(element.value <= 0){
                 formComplete = false;
                 invalidInput(element);
@@ -21,6 +21,21 @@ function validateForm(form){
   
 }
 
+function generateProjectSelectionList(){
+   let pList = storageFactory.getprojectList();
+   const projectSelection = document.getElementById('project-list');
+   pList.forEach(project =>{
+       console.log(project);
+       
+       const projectTitle = project.getprojectTitle();
+       const newOption = document.createElement('option');
+       newOption.textContent = projectTitle;
+       newOption.value = project.getprojectId();
+       projectSelection.appendChild(newOption);
+       
+
+   })
+}
 
 function invalidInput(element){
     element.classList.add('invalid');

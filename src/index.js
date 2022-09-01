@@ -50,6 +50,11 @@ newtaskIcon.addEventListener('click', ()=>{
 projectFormButton.addEventListener('click', ()=>{
     let projectForm = document.querySelector('.newproject___form');
     if(validateForm(projectForm)){
+        const projectTitle = document.getElementById('project-title').value;
+        //code for adding new project
+        let newProject = projectFactory(projectTitle);
+        
+
         clearForm(projectForm);
         closeForm(projectForm);
     }
@@ -58,24 +63,12 @@ projectFormButton.addEventListener('click', ()=>{
 
 taskFormButton.addEventListener('click', ()=>{
     let taskForm = document.querySelector('.newtask___form');
-    validateForm(taskForm);
+    if(validateForm(taskForm)){
+        clearForm(taskForm);
+        closeForm(taskForm);
+    };
 } )
-const generateProjectSelectionList = ()=>{
-   let pList = storageFactory.getprojectList();
-    /*
-   pList.forEach(project =>{
-       console.log(project);
-       
-       const projectTitle = project.getprojectTitle();
-       const newOption = document.createElement('option');
-       newOption.textContent = projectTitle;
-       newOption.value = project.getprojectId();
-       projectSelection.appendChild(newOption);
-       
 
-   })
-   */
-}
 cancelButton.forEach(button =>{
     button.addEventListener('click', ()=>{
         window.location.href = window.location.href;
