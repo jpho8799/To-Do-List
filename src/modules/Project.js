@@ -8,6 +8,9 @@ const projectFactory = (projectTitle)=>{
     const getprojectId = ()=> _projectId;
     const getprojectTitle = ()=> _projectTitle;
     const getTaskList = ()=>taskList;
+    const getTask = (taskId) =>{
+        return taskList.find((task) => task.getprojectId() == taskId)
+    }
 
     const addTask = (task)=>{
         taskList.push(task);
@@ -27,7 +30,7 @@ const projectFactory = (projectTitle)=>{
     }
 
     return {
-       projectId, _projectTitle, taskList, getprojectId,getprojectTitle, getTaskList, addTask, editProject, deleteTask
+       getprojectId, getprojectTitle, getTaskList, addTask, getTask, editProject, deleteTask
     }
 }
 

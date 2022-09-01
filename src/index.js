@@ -1,11 +1,17 @@
-import { Project } from './modules/Project';
+import { Project, projectFactory } from './modules/Project';
 import './styles.css';
 import { taskFactory } from './modules/Task';
+import { validateNewProject, validateNewTask } from './modules/Form';
+import { storageFactory } from './modules/Storage';
 
 const navbarIcon = document.querySelector("#navIcon");
 const newprojectIcon = document.querySelector("#new-project");
 const newtaskIcon = document.querySelector('#new-task');
-const cancelButton = document.querySelectorAll(".cancel");
+const cancelButton = document.querySelectorAll('.cancel');
+const projectFormButton = document.querySelector('#new-projectButton');
+const taskFormButton = document.querySelector('#new-taskButton');
+//delete this later
+const taskBody = document.querySelector('.tasks___body');
 
 navbarIcon.addEventListener('click', ()=>{
     const navBar = document.querySelector('nav');
@@ -22,29 +28,46 @@ navbarIcon.addEventListener('click', ()=>{
 newprojectIcon.addEventListener('click', ()=>{
     const projectForm = document.getElementById('projectForm');
     projectForm.style.display = 'flex';
-
 });
 
 newtaskIcon.addEventListener('click', ()=>{
     const taskForm = document.getElementById('taskForm');
     taskForm.style.display = 'flex';
+
 })
 
+
+
+projectFormButton.addEventListener('click', ()=>{
+    let projectForm = document.querySelector('.newproject___form');
+    validateNewProject(projectForm);
+
+})
+
+taskFormButton.addEventListener('click', ()=>{
+    let taskForm = document.querySelector('newtask___form');
+    validateNewTask(taskForm);
+} )
+const generateProjectSelectionList = ()=>{
+   let pList = storageFactory.getprojectList();
+    /*
+   pList.forEach(project =>{
+       console.log(project);
+       
+       const projectTitle = project.getprojectTitle();
+       const newOption = document.createElement('option');
+       newOption.textContent = projectTitle;
+       newOption.value = project.getprojectId();
+       projectSelection.appendChild(newOption);
+       
+
+   })
+   */
+}
 cancelButton.forEach(button =>{
     button.addEventListener('click', ()=>{
-        console.log("clicked");
         window.location.href = window.location.href;
         return false;
     })
 })
 
-
-/*
-
-*/
-
-const sampleTask = taskFactory("test", "10-9-2022", "high");
-console.log(sampleTask);
-console.log(sampleTask.getTitle());
-sampleTask.setTitle("new task");
-console.log(sampleTask.getTitle());

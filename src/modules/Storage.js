@@ -1,14 +1,24 @@
 import {v4 as uuidv4} from 'uuid'
 import { projectFactory } from './Project';
+
+
 const storageFactory = (()=>{
-    const storageId = uuidv4();
-    const projectList = [];
+    let storageId = 'storageKey';
+    let getprojectList = ()=>{
+        if(localStorage.getItem(storageId) == null){
+            return [];
+        }else{
+            return JSON.parse(localStorage.getItem(storageId));
+        }
+    }
     const addProject = (project)=>{
-        projectList.add(project);
-        localStorage.setItem(storageId, JSON.stringify(projectList));
+        let pList = getprojectList();
+        console.log(pList);
+        pList.push(project);
+        localStorage.setItem(storageId, JSON.stringify(pList));
     }
     const editStorage = (editedProject)=>{
-        projectList = JSON.parse(localStorage.getItem(storageId));
+        let projectList = JSON.parse(localStorage.getItem(storageId));
         projectList.forEach(project => {
             if(project.getprojectId()== editedProject.getprojectId()){
                 project = editedProject;
@@ -17,17 +27,24 @@ const storageFactory = (()=>{
         localStorage.setItem(storageId, JSON.stringify(projectList));
     }
     const getProject = (projectId) => {
-        return projectList.filter((project) => project.getprojectId() == projectId)
+        let pList = getprojectList();
+        return pList.find((project) => project.getprojectId() == projectId)
     }
     const deleteProject = (projectId)=> {
-        projectList.forEach(project => project.getprojectId() != projectId);
-        localStorage.setItem(storageId, JSON.stringify(projectList));
+        let pList = getprojectList();
+        pList.forEach(project => project.getprojectId() != projectId);
+        localStorage.setItem(storageId, JSON.stringify(pList));
+    }
+
+    const getTaskList = (projectId) =>{
+        const project = getProject(projectId);
+
     }
     const clearStorage = ()=>{
         localStorage.clear();
     }
     return {
-        projectList, addProject, editStorage, getProject, deleteProject, clearStorage
+       getprojectList, addProject, editStorage, getProject, deleteProject, clearStorage
     }
 })();
 

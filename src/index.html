@@ -57,30 +57,30 @@
                     Add New Project
                 </p>
                 <div class = "form___content flex___wrapper text-formatting">
-                    <label for="project-title">Title</label>
+                    <label for="project-title">Title(*)</label>
                     <input required = "required" type="text" id="project-title" name = "project-title" placeholder=" e.g Leetcode, Chores...">
                 </div>
 
                 <div class="button___container">
-                    <button class = "create" type = "submit">Create</button>
-                    <button class = "cancel">Cancel</button>
+                    <button class = "create" id = "new-projectButton" type = 'button'>Create</button>
+                    <button class = "cancel" type = "button">Cancel</button>
                 </div>
 
             </form>
         </div>
 
         <div class="newform" id = "taskForm">
-            <form class = "newproject___form" name = "taskForm" action="">
+            <form class = "newtask___form" name = "taskForm" action="">
                 <p class="form___heading text-formatting">
                     Add New Task
                 </p>
                 <div class = "form___content flex___wrapper text-formatting">
-                    <label for="task-title">Title</label>
+                    <label for="task-title">Title(*)</label>
                     <input required = "required" type="text" id="task-title" name = "task-title" placeholder=" e.g Leetcode, Chores...">
                 </div>
                 <div class = "form___content flex___wrapper text-formatting">
-                    <label for="project-list">Project Selection</label>
-                    <select required = "required" name="project-list" id="project-list"></select>
+                    <label for="project-list">Project Selection(*)</label>
+                    <select name="project-list" id="project-list"></select>
                 </div>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-duedate">Due Date</label>
@@ -98,7 +98,7 @@
 
 
                 <div class="button___container">
-                    <button type = "submit" class = "create">Create</button>
+                    <button  class = "create" id = 'new-taskButton' type = 'button'>Create</button>
                     <button  class = "cancel">Cancel</button>
                 </div>
 

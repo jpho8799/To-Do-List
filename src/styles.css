@@ -133,6 +133,9 @@ li {
    flex-direction: column;
 }
 
+.invalid {
+    border-color: red;
+}
 @keyframes left-to-right {
     0% {
         width: 0;
@@ -257,6 +260,11 @@ button {
         width: 20rem;
     }
 }
+
+
+
+
+
 
 html {
     visibility: visible;
