@@ -3,14 +3,21 @@ import { taskFactory } from "./Task";
 import {storageFactory} from "./Storage";
 
 function validateForm(form){
+    let formComplete = true;
     Array.from(form.elements).forEach(element=>{
-        if(element.value <= 0){
-            invalidInput(element);
-        }else{
-            validInput(element);
-        }
+        if(element.tagName == 'INPUT'){
+            if(element.value <= 0){
+                formComplete = false;
+                invalidInput(element);
+                
+            }else{
+                validInput(element);
+            }
+         }
+        
     })
 
+    return formComplete;
   
 }
 
@@ -35,4 +42,4 @@ function closeForm(form){
 
 
 
-export {validateForm};
+export {validateForm, clearForm, closeForm};

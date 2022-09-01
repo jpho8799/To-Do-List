@@ -1,15 +1,18 @@
 import { Project, projectFactory } from './modules/Project';
 import './styles.css';
 import { taskFactory } from './modules/Task';
-import { validateNewProject, validateNewTask } from './modules/Form';
+import { validateForm, clearForm, closeForm } from './modules/Form';
 import { storageFactory } from './modules/Storage';
 
 const navbarIcon = document.querySelector("#navIcon");
 const newprojectIcon = document.querySelector("#new-project");
+const projectForm = document.getElementById('projectForm');
+const taskForm = document.getElementById('taskForm');
 const newtaskIcon = document.querySelector('#new-task');
 const cancelButton = document.querySelectorAll('.cancel');
 const projectFormButton = document.querySelector('#new-projectButton');
 const taskFormButton = document.querySelector('#new-taskButton');
+
 //delete this later
 const taskBody = document.querySelector('.tasks___body');
 
@@ -26,13 +29,19 @@ navbarIcon.addEventListener('click', ()=>{
 });
 
 newprojectIcon.addEventListener('click', ()=>{
-    const projectForm = document.getElementById('projectForm');
-    projectForm.style.display = 'flex';
+    const taskFormStyle = window.getComputedStyle(taskForm).display;
+    if(taskFormStyle == 'none'){
+        projectForm.style.display = 'flex';
+    }
+
 });
 
 newtaskIcon.addEventListener('click', ()=>{
-    const taskForm = document.getElementById('taskForm');
-    taskForm.style.display = 'flex';
+    const projectFormStyle = window.getComputedStyle(projectForm).display;
+    if(projectFormStyle == 'none'){
+        taskForm.style.display = 'flex';
+    }
+
 
 })
 
@@ -40,13 +49,16 @@ newtaskIcon.addEventListener('click', ()=>{
 
 projectFormButton.addEventListener('click', ()=>{
     let projectForm = document.querySelector('.newproject___form');
-    validateNewProject(projectForm);
+    if(validateForm(projectForm)){
+        clearForm(projectForm);
+        closeForm(projectForm);
+    }
 
 })
 
 taskFormButton.addEventListener('click', ()=>{
-    let taskForm = document.querySelector('newtask___form');
-    validateNewTask(taskForm);
+    let taskForm = document.querySelector('.newtask___form');
+    validateForm(taskForm);
 } )
 const generateProjectSelectionList = ()=>{
    let pList = storageFactory.getprojectList();
