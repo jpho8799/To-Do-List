@@ -35,7 +35,7 @@ body{
                          "content content"
                          "footer footer";
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 4rem 1fr 3rem;
+    grid-template-rows: 4rem 50rem 3rem;
     
 
 }
@@ -69,6 +69,10 @@ nav {
     width: 0;
     overflow-y: scroll;
     z-index: 50;
+}
+
+h4 {
+    color:var(--slightly-transparentgrey)
 }
 
 .nav___content {
@@ -116,12 +120,12 @@ li {
 }
 
 .navbar---toggleLtoR {
-    animation: left-to-right 500ms linear forwards;
+    animation: navBar-left-to-right 500ms linear forwards;
 
 }
 
 .navbar---toggleRtoL {
-    animation: right-to-left 500ms linear forwards;
+    animation: navBar-right-to-left 500ms linear forwards;
 }
 
 .background---blur {
@@ -136,7 +140,7 @@ li {
 .invalid {
     border-color: red;
 }
-@keyframes left-to-right {
+@keyframes navBar-left-to-right {
     0% {
         width: 0;
     }
@@ -154,7 +158,7 @@ li {
     }
 }
 
-@keyframes right-to-left {
+@keyframes navBar-right-to-left {
     0%{
         width: 20rem;
     }
@@ -260,10 +264,85 @@ button {
         width: 20rem;
     }
 }
+.main___content{
+    width: 100%;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-bottom: 4rem;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    
+}
+.tasks___body{
+    width: 100%;
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: 18rem 18rem 18rem;
+    column-gap: 1.5rem;
+    
+
+}
+
+.task___list {
+    margin-top: 1rem;
+    height: 100%;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-rows: 1fr;
+    row-gap: 1rem;
+}
+.task___item {
+    width: 18rem;
+    height: 10rem;
+    background-color: var(--ucla-blue);
+    border-radius: 1rem;
+    box-shadow: var(--boxShadow);
+}
 
 
+.main---toggleLtoR {
+    animation: main-left-to-right 500ms linear forwards;
 
+}
+.main---toggleRtoL{
+    animation: main-right-to-left 500ms linear forwards;
+}
 
+@keyframes main-left-to-right {
+    0% {
+        padding-left: 2.5rem;
+    }
+
+    33% {
+        padding-left: 9.5rem;
+    }
+
+    66% {
+        padding-left: 16.5rem;
+    }
+
+    100% {
+        padding-left: 22.5rem;
+    }
+}
+
+@keyframes main-right-to-left {
+    0%{
+        padding-left: 22.5rem;
+    }
+
+    33% {
+        padding-left: 16.5rem;
+    }
+
+    66% {
+        padding-left: 9.5rem;
+    }
+
+    100%{
+        padding-left: 2.5rem;
+    }
+}
 
 
 html {

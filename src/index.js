@@ -4,7 +4,8 @@ import { taskFactory } from './modules/Task';
 import { validateForm, clearForm, closeForm } from './modules/Form';
 import { storageFactory } from './modules/Storage';
 
-const navbarIcon = document.querySelector("#navIcon");
+const mainContent = document.querySelector('.main___content')
+const navbarIcon = document.querySelector('#navIcon');
 const newprojectIcon = document.querySelector("#new-project");
 const projectForm = document.getElementById('projectForm');
 const taskForm = document.getElementById('taskForm');
@@ -12,6 +13,7 @@ const newtaskIcon = document.querySelector('#new-task');
 const cancelButton = document.querySelectorAll('.cancel');
 const projectFormButton = document.querySelector('#new-projectButton');
 const taskFormButton = document.querySelector('#new-taskButton');
+
 
 //delete this later
 const taskBody = document.querySelector('.tasks___body');
@@ -22,9 +24,15 @@ navbarIcon.addEventListener('click', ()=>{
     if(navBar.classList.contains('navbar---toggleLtoR')){
         navBar.classList.remove('navbar---toggleLtoR');
         navBar.classList.add('navbar---toggleRtoL');
+
+        mainContent.classList.remove('main---toggleLtoR');
+        mainContent.classList.add('main---toggleRtoL')
     }else{
         navBar.classList.remove('navbar---toggleRtoL');
         navBar.classList.add('navbar---toggleLtoR');
+
+        mainContent.classList.remove('main---toggleRtoL');
+        mainContent.classList.add('main---toggleLtoR');
     }
 });
 
