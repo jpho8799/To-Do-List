@@ -40,6 +40,7 @@ newprojectIcon.addEventListener('click', ()=>{
     const taskFormStyle = window.getComputedStyle(taskForm).display;
     if(taskFormStyle == 'none'){
         projectForm.style.display = 'flex';
+        mainContent.classList.add('content---blur');
     }
 
 });
@@ -48,6 +49,7 @@ newtaskIcon.addEventListener('click', ()=>{
     const projectFormStyle = window.getComputedStyle(projectForm).display;
     if(projectFormStyle == 'none'){
         taskForm.style.display = 'flex';
+        mainContent.classList.add('content---blur');
     }
 
 
@@ -65,6 +67,7 @@ projectFormButton.addEventListener('click', ()=>{
 
         clearForm(projectForm);
         closeForm(projectForm);
+        mainContent.classList.remove('content---blur');
     }
 
 })
@@ -74,6 +77,7 @@ taskFormButton.addEventListener('click', ()=>{
     if(validateForm(taskForm)){
         clearForm(taskForm);
         closeForm(taskForm);
+        mainContent.classList.remove('content---blur');
     };
 } )
 
