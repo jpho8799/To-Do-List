@@ -11,8 +11,10 @@ const projectForm = document.getElementById('projectForm');
 const taskForm = document.getElementById('taskForm');
 const newtaskIcon = document.querySelector('#new-task');
 const cancelButton = document.querySelectorAll('.cancel');
+const deleteTask = document.querySelectorAll('.deleteTask');
 const projectFormButton = document.querySelector('#new-projectButton');
 const taskFormButton = document.querySelector('#new-taskButton');
+
 
 
 //delete this later
@@ -88,3 +90,9 @@ cancelButton.forEach(button =>{
     })
 })
 
+deleteTask.forEach(button =>{
+    button.addEventListener('click', ()=>{
+        let taskContainer = button.parentElement.parentElement;
+        taskContainer.remove();
+    })
+})

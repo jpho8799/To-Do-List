@@ -8,7 +8,7 @@
     <style>html {visibility: hidden; opacity: 0;}</style>
     <script src="https://kit.fontawesome.com/82c4d17290.js" crossorigin="anonymous"></script>
 
-<script defer src="index482c894a081e816a3da5.js"></script></head>
+<script defer src="index981b52332e01e4cd1357.js"></script></head>
 <body>
     <header>
         <div class="navbar__wrapper" id="navIcon">
@@ -111,7 +111,7 @@
         <div class="newform" id = "taskForm">
             <form class = "newtask___form" name = "taskForm" action="">
                 <p class="form___heading text-formatting">
-                    Add New Task
+                    Add/Edit Task
                 </p>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-title">Title(*)</label>
@@ -133,6 +133,14 @@
                         <option value="high">High</option>
                     </select>
                 </div>
+                <div class="form___content flex___wrapper text-formatting">
+                    <label for="task-status">Status(*)</label>
+                    <select name="task-status" id="task-status">
+                        <option value="to-do">To-Do</option>
+                        <option value="in-progress">In-Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div> 
                 <div class="button___container">
                     <button  class = "create" id = 'new-taskButton' type = 'button'>Create</button>
                     <button  class = "cancel">Cancel</button>

@@ -111,7 +111,7 @@
         <div class="newform" id = "taskForm">
             <form class = "newtask___form" name = "taskForm" action="">
                 <p class="form___heading text-formatting">
-                    Add New Task
+                    Add/Edit Task
                 </p>
                 <div class = "form___content flex___wrapper text-formatting">
                     <label for="task-title">Title(*)</label>
@@ -133,6 +133,14 @@
                         <option value="high">High</option>
                     </select>
                 </div>
+                <div class="form___content flex___wrapper text-formatting">
+                    <label for="task-status">Status(*)</label>
+                    <select name="task-status" id="task-status">
+                        <option value="to-do">To-Do</option>
+                        <option value="in-progress">In-Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div> 
                 <div class="button___container">
                     <button  class = "create" id = 'new-taskButton' type = 'button'>Create</button>
                     <button  class = "cancel">Cancel</button>
