@@ -303,8 +303,34 @@ button {
     background-color: var(--ucla-blue);
     border-radius: 1rem;
     box-shadow: var(--boxShadow);
+    display: flex;
+    flex-direction: column;
+    position: static;
 }
 
+.taskTitle {
+    margin: 1rem;
+    font-size: 1rem;
+
+}
+
+.taskDueDate, .taskPriorty {
+    margin-left: 1rem;
+    font-size: 0.75rem;
+    color: var(--slightly-transparentgrey);
+}
+
+.taskButtons {
+
+    display: flex;
+    width: 3rem;
+    justify-content: space-between;
+    color: var(--slightly-transparentwhite);
+    position: relative;
+    left: 14rem;
+    top: 3rem;
+
+}
 
 .main---toggleLtoR {
     animation: main-left-to-right 500ms linear forwards;
