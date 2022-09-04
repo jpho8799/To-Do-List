@@ -92,6 +92,7 @@ cancelButton.forEach(button =>{
 
 deleteTask.forEach(button =>{
     button.addEventListener('click', ()=>{
+        //add functionality to delete task from storage
         let taskContainer = button.parentElement.parentElement;
         taskContainer.remove();
     })
