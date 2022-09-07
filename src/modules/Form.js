@@ -1,6 +1,9 @@
-import {projectFactory } from "./Project";
+import {getTitle, getId} from "./Project";
 import { taskFactory } from "./Task";
-import {storageFactory} from "./Storage";
+import Storage from "./Storage";
+import TodDoList from "./TodoList";
+
+
 
 function validateForm(form){
     let formComplete = true;
@@ -21,20 +24,33 @@ function validateForm(form){
   
 }
 
-function generateProjectSelectionList(){
-   let pList = storageFactory.getprojectList();
-   const projectSelection = document.getElementById('project-list');
-   pList.forEach(project =>{
-       console.log(project);
-       
-       const projectTitle = project.getprojectTitle();
-       const newOption = document.createElement('option');
-       newOption.textContent = projectTitle;
-       newOption.value = project.getprojectId();
-       projectSelection.appendChild(newOption);
-       
 
-   })
+function updateTaskForm(newProject){
+    const projectSelection = document.getElementById('project-list');
+    const projectTitle = newProject.getTitle();
+    const newOption = document.createElement('option');
+    newOption.textContent = projectTitle;
+    newOption.value = newProject.getId();
+    projectSelection.appendChild(newOption);
+    
+
+}
+
+function initTaskForm(){
+    const projectSelection = document.getElementById('project-list');
+    let toDoList = Storage.getTodoList();
+    let projectList = toDoList.getProjects();
+    
+    
+    projectList.forEach(project =>{
+        const projectTitle = project.getTitle();
+        const newOption = document.createElement('option');
+        newOption.textContent = projectTitle;
+        newOption.value = project.getId();
+        projectSelection.appendChild(newOption);
+
+    })
+    
 }
 
 function invalidInput(element){
@@ -57,4 +73,4 @@ function closeForm(form){
 
 
 
-export {validateForm, clearForm, closeForm};
+export {validateForm, updateTaskForm, initTaskForm, clearForm, closeForm};

@@ -1,8 +1,9 @@
-import { Project, projectFactory } from './modules/Project';
+import  Project from './modules/Project';
 import './styles.css';
 import { taskFactory } from './modules/Task';
-import { validateForm, clearForm, closeForm } from './modules/Form';
-import { storageFactory } from './modules/Storage';
+import { validateForm, clearForm, closeForm, initTaskForm, updateTaskForm } from './modules/Form';
+import Storage from './modules/Storage';
+import {initNavBar, updateNavBar} from './modules/NavBar'
 
 const mainContent = document.querySelector('.main___content')
 const navbarIcon = document.querySelector('#navIcon');
@@ -64,9 +65,10 @@ projectFormButton.addEventListener('click', ()=>{
     if(validateForm(projectForm)){
         const projectTitle = document.getElementById('project-title').value;
         //code for adding new project
-        let newProject = projectFactory(projectTitle);
-        
-
+        let newProject = new Project(projectTitle);
+        Storage.addProject(newProject);
+        updateTaskForm(newProject);
+        updateNavBar(newProject);
         clearForm(projectForm);
         closeForm(projectForm);
         mainContent.classList.remove('content---blur');
@@ -98,4 +100,11 @@ deleteTask.forEach(button =>{
     })
 })
 
-//testing 123
+
+window.onload = ()=>{
+    Storage.getTodoList();
+    initTaskForm();
+    initNavBar();
+    
+}
+

@@ -1,44 +1,58 @@
-import {v4 as uuidv4} from 'uuid'
-import { projectFactory } from './Project';
 
-const projectList = [];
-const storageFactory = (()=>{
-    let storageId = 'storageKey';
-    const initProjectList = ()=>{
-        projectList = JSON.parse(localStorage.getItem(storageId));
-    }
-    const addProject = (project)=>{
-        
-        projectList.push(project);
-        localStorage.setItem(storageId, JSON.stringify(pList));
-    }
-    
-    const getProject = (projectId) => {
-    
-        return projectList.find((project) => project.getprojectId() == projectId)
-    }
-    const deleteProject = (projectId)=> {
-    
-        projectList.forEach(project => project.getprojectId() != projectId);
-        localStorage.setItem(storageId, JSON.stringify(pList));
+import Project from './Project'
+import Task from './Task';
+import TodoList from './TodoList'
+
+
+export default class Storage {
+    static saveTodoList(data){
+        localStorage.setItem('storageId', JSON.stringify(data));
     }
 
-    const editStorage = (editedProject)=>{
-       
-        projectList.forEach(project => {
-            if(project.getprojectId()== editedProject.getprojectId()){
-                project = editedProject;
-            }
+    static getTodoList(){
+        const todoList = Object.assign(
+            new TodoList(),
+            JSON.parse(localStorage.getItem('storageId'))
+        )
+
+        todoList.setProjects(
+            todoList
+            .getProjects()
+            .map((project)=> Object.assign(new Project(), project))
+        )
+
+        todoList.getProjects()
+        .forEach(project=>{
+            project.setTasks(
+                project.getTasks().map((task) => Object.assign(new Task(), task))
+            )
         })
-        localStorage.setItem(storageId, JSON.stringify(projectList));
+
+        return todoList;
     }
 
-    const clearStorage = ()=>{
-        localStorage.clear();
+    static addProject(project){
+        const todoList = Storage.getTodoList()
+        todoList.addProject(project)
+        Storage.saveTodoList(todoList);
     }
-    return {
-       initProjectList, addProject, editStorage, getProject, deleteProject, clearStorage
-    }
-})();
 
-export {storageFactory}
+    static deleteProject(projectId){
+        const todoList = Storage.getTodoList();
+        todoList.deleteProject(projectId);
+        Storage.saveTodoList(todoList);
+    }
+
+
+  static addTask(projectId, task) {
+    const todoList = Storage.getTodoList()
+    todoList.getProject(projectId).addTask(task)
+    Storage.saveTodoList(todoList)
+  }
+    
+  static deleteTask(projectId, taskId) {
+    const todoList = Storage.getTodoList()
+    todoList.getProject(projectId).deleteTask(taskId)
+    Storage.saveTodoList(todoList)
+  }
+}
