@@ -4,6 +4,8 @@ import { taskFactory } from './modules/Task';
 import { validateForm, clearForm, closeForm, initTaskForm, updateTaskForm } from './modules/Form';
 import Storage from './modules/Storage';
 import {initNavBar, updateNavBar} from './modules/NavBar'
+import {v4 as uuid4} from 'uuid';
+
 
 const mainContent = document.querySelector('.main___content')
 const navbarIcon = document.querySelector('#navIcon');
@@ -16,11 +18,6 @@ const deleteTask = document.querySelectorAll('.deleteTask');
 const projectFormButton = document.querySelector('#new-projectButton');
 const taskFormButton = document.querySelector('#new-taskButton');
 
-
-
-
-//delete this later
-const taskBody = document.querySelector('.tasks___body');
 
 navbarIcon.addEventListener('click', ()=>{
     const navBar = document.querySelector('nav');
@@ -59,8 +56,6 @@ newtaskIcon.addEventListener('click', ()=>{
 
 })
 
-
-
 projectFormButton.addEventListener('click', ()=>{
     let projectForm = document.querySelector('.newproject___form');
     if(validateForm(projectForm)){
@@ -80,6 +75,7 @@ projectFormButton.addEventListener('click', ()=>{
 taskFormButton.addEventListener('click', ()=>{
     let taskForm = document.querySelector('.newtask___form');
     if(validateForm(taskForm)){
+
         clearForm(taskForm);
         closeForm(taskForm);
         mainContent.classList.remove('content---blur');
@@ -101,11 +97,11 @@ deleteTask.forEach(button =>{
     })
 })
 
-
 window.onload = ()=>{
     Storage.getTodoList();
     initTaskForm();
     initNavBar();
     
 }
+
 

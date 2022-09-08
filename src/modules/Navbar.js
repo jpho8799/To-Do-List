@@ -1,4 +1,7 @@
 import Storage from "./Storage";
+import {displayProject} from "./MainContent"
+
+
 function initNavBar(){
 
         const navList = document.querySelector('.nav___list');
@@ -8,13 +11,13 @@ function initNavBar(){
         projectList.forEach(project=>{
             const projectTitle = project.getTitle();
             const projectId = project.getId();
-            console.log(projectId);
             const liElement = document.createElement('li');
             liElement.textContent = projectTitle;
-            liElement.setAttribute('id', projectId);
+            liElement.setAttribute('data-UUID', projectId);
             liElement.setAttribute('class', 'navItem');
             liElement.addEventListener('click', ()=>{
-                displayProject(projectId);
+                
+                displayProject(liElement.data-UUID);
             });
             navList.appendChild(liElement);
         })
@@ -26,20 +29,18 @@ function updateNavBar(newProject){
     const projectId = newProject.getId();
     const liElement = document.createElement('li');
     liElement.textContent = projectTitle;
-    liElement.setAttribute('id', projectId);
+    liElement.setAttribute('data-UUID', projectId);
     liElement.setAttribute('class', 'navItem');
 
+    let dataId = liElement.getAttribute('data-UUID')
     navList.appendChild(liElement);
     liElement.addEventListener('click', ()=>{
-        displayProject(projectId);
+        displayProject(dataId);
     }
         
     )
 }
 
-function displayProject(content){
-    console.log(content);
-}
 
 export{initNavBar, updateNavBar};
 
