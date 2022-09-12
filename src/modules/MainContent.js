@@ -1,3 +1,5 @@
+import Storage from './Storage'
+
 function getProjectList(projectId){
     let toDoList = Storage.getTodoList();
     let projectList = toDoList.getProjects();
@@ -7,8 +9,10 @@ function getProjectList(projectId){
 
 function toDo(projectId){
     let project = getProjectList(projectId);
+
+    console.log(project);
     let taskList = project.getTasks();
-    return todoSection = taskList.filter(task =>{
+    return taskList.filter(task =>{
         task.getStatus === 'To-Do';
     })
     
@@ -18,7 +22,7 @@ function toDo(projectId){
 function inProgress(projectId){
     let project = getProjectList(projectId);
     let taskList = project.getTasks();
-    return todoSection = taskList.filter(task =>{
+    return taskList.filter(task =>{
         task.getStatus === 'In-Progress';
     })
 }
@@ -26,7 +30,7 @@ function inProgress(projectId){
 function completed(projectId){
     let project = getProjectList(projectId);
     let taskList = project.getTasks();
-    return todoSection = taskList.filter(task =>{
+    return taskList.filter(task =>{
         task.getStatus === 'Completed';
     })
 }
@@ -54,6 +58,9 @@ function createTaskElement(task){
     return taskItem;
 }
 
+function editTask(){
+
+}
 function editTaskItem(taskElement, task){
 
 }
@@ -66,9 +73,9 @@ function removeAllChildNodes(parent) {
 }
 
 function clearProject(){
-    const toDo = document.getElementsByTagName('to-do');
-    const inProgress = document.getElementsByTagName('in-progress');
-    const completed = document.getElementsByTagName('completed');
+    const toDo = document.getElementById('to-do');
+    const inProgress = document.getElementById('in-progress');
+    const completed = document.getElementById('completed');
 
     removeAllChildNodes(toDo);
     removeAllChildNodes(inProgress);
@@ -76,12 +83,13 @@ function clearProject(){
 }
 
 function displayProject(projectId){
-    const toDoSection = document.getElementsByTagName('to-do');
-    const inProgressSection = document.getElementsByTagName('in-progress');
-    const completedSection = document.getElementsByTagName('completed');
+    const toDoSection = document.getElementById('to-do');
+    const inProgressSection = document.getElementById('in-progress');
+    const completedSection = document.getElementById('completed');
 
     clearProject();
 
+    
     let toDoList = toDo(projectId);
     let inProgressList = inProgress(projectId);
     let completeList = completed(projectId);
@@ -90,7 +98,7 @@ function displayProject(projectId){
     displaySection(inProgressSection, inProgressList);
     displaySection(completedSection, completeList);
 
-
+    
 
 }
 

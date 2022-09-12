@@ -1,7 +1,9 @@
-import {getTitle, getId} from "./Project";
-import { taskFactory } from "./Task";
+import Project from "./Project";
+import Task from "./Task";
 import Storage from "./Storage";
 import TodDoList from "./TodoList";
+import {updateNavBar} from "./NavBar";
+
 
 
 
@@ -25,10 +27,11 @@ function validateForm(form){
 }
 
 
-function updateTaskForm(newProject){
+function updateTaskForm(newProject, projectId){
     const projectSelection = document.getElementById('project-list');
     const projectTitle = newProject.getTitle();
     const newOption = document.createElement('option');
+    newOption.setAttribute('data-UUID', projectId);
     newOption.textContent = projectTitle;
     newOption.value = newProject.getId();
     projectSelection.appendChild(newOption);
@@ -53,6 +56,94 @@ function initTaskForm(){
     
 }
 
+function initplusBtns(){
+
+    const mainContent = document.querySelector('.main___content')
+    const newprojectIcon = document.querySelector("#new-project");
+    const newtaskIcon = document.querySelector('#new-task');
+    const projectForm = document.getElementById('projectForm');
+    const taskForm = document.getElementById('taskForm');
+
+    newprojectIcon.addEventListener('click', ()=>{
+        const taskFormStyle = window.getComputedStyle(taskForm).display;
+        if(taskFormStyle == 'none'){
+            projectForm.style.display = 'flex';
+            mainContent.classList.add('content---blur');
+        }
+    
+    });
+
+    newtaskIcon.addEventListener('click', ()=>{
+        const projectFormStyle = window.getComputedStyle(projectForm).display;
+        if(projectFormStyle == 'none'){
+            taskForm.style.display = 'flex';
+            mainContent.classList.add('content---blur');
+        }
+    
+    
+    })
+}
+
+function initFormBtns(){
+    const mainContent = document.querySelector('.main___content')
+    const projectFormButton = document.querySelector('#new-projectButton');
+    const taskFormButton = document.querySelector('#new-taskButton');
+    const cancelButton = document.querySelectorAll('.cancel');
+
+    projectFormButton.addEventListener('click', ()=>{
+        let projectForm = document.querySelector('.newproject___form');
+        if(validateForm(projectForm)){
+            const title = document.getElementById('project-title').value;
+            //code for adding new project
+            let newProject = new Project(title);
+            let projectId = newProject.getId();
+            Storage.addProject(newProject);
+            updateTaskForm(newProject, projectId);
+            updateNavBar(newProject);
+            clearForm(projectForm);
+            closeForm(projectForm);
+            mainContent.classList.remove('content---blur');
+        }
+
+    })
+
+    taskFormButton.addEventListener('click', ()=>{
+        let taskForm = document.querySelector('.newtask___form');
+        if(validateForm(taskForm)){
+            const projectId = document.getElementById('project-list').value;
+            const title = document.getElementById('task-title').value;
+            const dueDate = document.getElementById('task-duedate').value;
+            const priority = document.getElementById('task-priority').value;
+            const status = document.getElementById('task-status').value;
+
+
+            const newTask = new Task(title, dueDate, priority, status);
+
+            Storage.addTask(projectId, newTask);
+
+
+            
+            clearForm(taskForm);
+            closeForm(taskForm);
+            mainContent.classList.remove('content---blur');
+        };
+    } )
+
+    cancelButton.forEach(button =>{
+        button.addEventListener('click', ()=>{
+            window.location.href = window.location.href;
+            return false;
+        })
+    })
+
+}
+
+function initForms(){
+    initTaskForm();
+    initplusBtns();
+    initFormBtns();
+}
+
 function invalidInput(element){
     element.classList.add('invalid');
 }
@@ -73,4 +164,4 @@ function closeForm(form){
 
 
 
-export {validateForm, updateTaskForm, initTaskForm, clearForm, closeForm};
+export {initForms};

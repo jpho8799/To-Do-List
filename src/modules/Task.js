@@ -3,7 +3,7 @@ import {v4 as uuidv4} from 'uuid';
 
 export default class Task {
     constructor(title, dueDate = 'No Date', priority = 'low', status = 'to-do'){
-        this.uuidv4 = uuidv4();
+        this.taskId = uuidv4().toString();
         this.title = title; 
         this.dueDate = dueDate;
         this.priority = priority;
@@ -13,7 +13,7 @@ export default class Task {
     }
 
     getId(){
-        return this.uuidv4.toString();
+        return this.taskId;
     }
     setTitle(title){
         this.title = title;

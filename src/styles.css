@@ -82,7 +82,8 @@ h4 {
 }
 li {
     list-style-type: none;
-    margin: 1.5rem 0 1.5rem 2rem;
+    margin: 1.5rem 0 1.5rem 0rem;
+    padding: 0.5rem 2rem 0.5rem 2rem;
 }
 
 
@@ -96,7 +97,7 @@ li {
     border-radius: 25px;
     background-color: var(--soft-violet);
 
-    position: absolute;
+    position: absolute; quotes: auto;
     right: 10px;
     top: 20px;
     
@@ -119,6 +120,13 @@ li {
     justify-self: end;
 
 }
+
+.nav___item:hover{
+    background-color: var(--soft-violet);
+    color: white;
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
+
 
 .navbar---toggleLtoR {
     animation: navBar-left-to-right 500ms linear forwards;

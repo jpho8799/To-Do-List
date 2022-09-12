@@ -5,14 +5,14 @@ import Task from './Task';
 
 export default class Project {
     constructor(title){
-        this.uuidv4 = uuidv4();
+        this.projectId = uuidv4().toString();
         this.title = title;
         this.tasks = [];
 
     }
 
     getId(){
-        return this.uuidv4.toString();
+        return this.projectId;
     }
     setTitle(title){
         this.title = title;
