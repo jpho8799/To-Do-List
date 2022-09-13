@@ -46,10 +46,12 @@ export default class Storage {
 
 
   static addTask(projectId, task) {
+    console.log('added task');
     const todoList = Storage.getTodoList()
-    todoList.getProject(projectId).addTask(task)
+    let project = todoList.getProject(projectId)
+    project.addTask(task);
     console.log(todoList);
-    Storage.saveTodoList(todoList)
+    Storage.saveTodoList(todoList);
   }
     
   static deleteTask(projectId, taskId) {

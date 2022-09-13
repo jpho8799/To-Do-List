@@ -15,7 +15,8 @@
     --soft-violet: hsla(277, 93%, 46%, 0.956);
     --white: hsl(0, 0%, 100%);
     --slightly-transparentgrey: rgba(147, 144, 144, 0.875);
-    --slightly-transparentwhite: hsla(0, 0%, 100%, 0.6);
+    --slightly-transparentpurple: hsla(277, 83%, 77%, 0.956);
+    --transparent-grey: rgb(250, 249, 249);
 
 
 }
@@ -135,6 +136,11 @@ li {
 
 .navbar---toggleRtoL {
     animation: navBar-right-to-left 500ms linear forwards;
+}
+
+.navItem---selected{
+    background-color: var(--soft-violet);
+    color: white;
 }
 
 .background---blur {
@@ -292,7 +298,7 @@ button {
     padding-top: 5rem;
     display: grid;
     grid-template-columns: 18rem 18rem 18rem;
-    column-gap: 1.5rem;
+    column-gap: 2rem;
     
 
 }

@@ -38,7 +38,6 @@ function initNavBarItem(){
             liElement.setAttribute('data-UUID', projectId);
             liElement.setAttribute('class', 'nav___item');
             liElement.addEventListener('click', ()=>{
-                
                 displayProject(liElement.getAttribute('data-UUID'));
             });
             navList.appendChild(liElement);

@@ -118,7 +118,7 @@ function initFormBtns(){
 
 
             const newTask = new Task(title, dueDate, priority, status);
-
+            console.log(newTask);
             Storage.addTask(projectId, newTask);
 
 

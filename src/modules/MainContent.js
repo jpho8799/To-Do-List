@@ -12,9 +12,10 @@ function toDo(projectId){
 
     console.log(project);
     let taskList = project.getTasks();
-    return taskList.filter(task =>{
-        task.getStatus === 'To-Do';
-    })
+    console.log(taskList);
+    let toDo =  taskList.filter(task =>task.getStatus() == 'to-do');
+    console.log(toDo);
+    return toDo;
     
 
 }
@@ -22,24 +23,21 @@ function toDo(projectId){
 function inProgress(projectId){
     let project = getProjectList(projectId);
     let taskList = project.getTasks();
-    return taskList.filter(task =>{
-        task.getStatus === 'In-Progress';
-    })
+    return taskList.filter(task =>task.getStatus() == 'in-progress')
 }
 
 function completed(projectId){
     let project = getProjectList(projectId);
     let taskList = project.getTasks();
-    return taskList.filter(task =>{
-        task.getStatus === 'Completed';
-    })
+    return taskList.filter(task =>task.getStatus() === 'completed');
+    
 }
 
 function createTaskElement(task){
     let taskItem = document.createElement('section');
     taskItem.setAttribute('class', 'task___list');
     taskItem.innerHTML = `
-    <div class="task___item">
+    <div class="task___item" id = ${task.getId()}>
         <p class = 'taskTitle'>${task.getTitle()}</p>
         <p class = 'taskDueDate'>Due Date: ${task.getdueDate()}</p>
         <p class = 'taskPriorty'>Priority: ${task.getPriority()}</p>
