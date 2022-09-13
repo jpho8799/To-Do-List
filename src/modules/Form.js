@@ -3,6 +3,7 @@ import Task from "./Task";
 import Storage from "./Storage";
 import TodDoList from "./TodoList";
 import {updateNavBar} from "./NavBar";
+import {displayProject} from "./MainContent"
 
 
 
@@ -120,7 +121,7 @@ function initFormBtns(){
             const newTask = new Task(title, dueDate, priority, status);
             console.log(newTask);
             Storage.addTask(projectId, newTask);
-
+            displayProject(projectId);
 
             
             clearForm(taskForm);

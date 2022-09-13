@@ -1,5 +1,6 @@
 import Storage from './Storage'
 
+
 function getProjectList(projectId){
     let toDoList = Storage.getTodoList();
     let projectList = toDoList.getProjects();
@@ -37,7 +38,7 @@ function createTaskElement(task){
     let taskItem = document.createElement('section');
     taskItem.setAttribute('class', 'task___list');
     taskItem.innerHTML = `
-    <div class="task___item" id = ${task.getId()}>
+    <div class="task___item ${task.getStatus()}" id = ${task.getId()}>
         <p class = 'taskTitle'>${task.getTitle()}</p>
         <p class = 'taskDueDate'>Due Date: ${task.getdueDate()}</p>
         <p class = 'taskPriorty'>Priority: ${task.getPriority()}</p>
@@ -56,13 +57,22 @@ function createTaskElement(task){
     return taskItem;
 }
 
-function editTask(){
+function editTask(taskId){
 
 }
 function editTaskItem(taskElement, task){
 
 }
 
+function addTask(projectId, task){
+
+}
+
+function deleteTask(taskId){
+    let taskItem = document.getElementById(taskId);
+    let parentEl = taskItem.parentNode;
+    parentEl.removeChild(taskItem);
+}
 
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
@@ -95,6 +105,7 @@ function displayProject(projectId){
     displaySection(toDoSection, toDoList);
     displaySection(inProgressSection, inProgressList);
     displaySection(completedSection, completeList);
+    initMainContentBtn(projectId);
 
     
 
@@ -105,6 +116,29 @@ function displaySection(section, sectionList){
         let taskElement = createTaskElement(task);
         section.appendChild(taskElement);
     })
+}
+
+function initMainContentBtn(projectId){
+    let deleteBtns = document.querySelectorAll('.deleteTask');
+    let editBtns = document.querySelectorAll('.editTask');
+
+    deleteBtns.forEach(btn =>{
+        btn.addEventListener('click', ()=>{
+            let taskId = btn.parentElement.parentElement.id;
+            deleteTask(taskId);
+            Storage.deleteTask(projectId, taskId);
+            displayProject(projectId);
+
+        })
+    })
+
+    editBtns.forEach(btn =>{
+        btn.addEventListener('click', ()=>{
+
+        })
+    })
+
+
 }
 
 export {displayProject}

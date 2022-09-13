@@ -27,21 +27,21 @@ function initNavBarFunction(){
 
 function initNavBarItem(){
     const navList = document.querySelector('.nav___list');
-        let toDoList = Storage.getTodoList();
-        let projectList = toDoList.getProjects();
+    let toDoList = Storage.getTodoList();
+    let projectList = toDoList.getProjects();
 
-        projectList.forEach(project=>{
-            const projectTitle = project.getTitle();
-            const projectId = project.getId();
-            const liElement = document.createElement('li');
-            liElement.textContent = projectTitle;
-            liElement.setAttribute('data-UUID', projectId);
-            liElement.setAttribute('class', 'nav___item');
-            liElement.addEventListener('click', ()=>{
-                displayProject(liElement.getAttribute('data-UUID'));
-            });
-            navList.appendChild(liElement);
-        })
+    projectList.forEach(project=>{
+        const projectTitle = project.getTitle();
+        const projectId = project.getId();
+        const liElement = document.createElement('li');
+        liElement.textContent = projectTitle;
+        liElement.setAttribute('data-UUID', projectId);
+        liElement.setAttribute('class', 'nav___item');
+        liElement.addEventListener('click', ()=>{
+            displayProject(liElement.getAttribute('data-UUID'));
+        });
+        navList.appendChild(liElement);
+    })
 }
 
 function initNavBar(){

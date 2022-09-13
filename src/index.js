@@ -5,6 +5,7 @@ import {initForms} from './modules/Form';
 import Storage from './modules/Storage';
 import {initNavBar} from './modules/NavBar'
 import {v4 as uuid4} from 'uuid';
+import { initMainContentBtn } from './modules/MainContent';
 
 const deleteTask = document.querySelectorAll('.deleteTask');
 

@@ -43,7 +43,7 @@ export default class Project {
 
     editTask(editedTask){
         this.tasks.find(task =>{
-            if(task.getId == editedTask.getId){
+            if(task.getId == editedTask.getId()){
                 task.setTitle(editedTask.getTitle());
                 task.setdueDate(editedTask.getdueDate());
                 task.setPriority(editedTask.getPriority());
@@ -51,8 +51,8 @@ export default class Project {
             }
         })
     }
-    deletetask(taskId){
-        this.tasks = this.tasks.filter(task => task.getId !== taskId);
+    deleteTask(taskId){
+        this.tasks = this.tasks.filter(task => task.getId() !== taskId);
     }
 
     
