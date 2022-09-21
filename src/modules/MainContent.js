@@ -127,8 +127,9 @@ function initMainContentBtn(projectId){
         const projectFormStyle = window.getComputedStyle(projectForm).display;
         btn.addEventListener('click', ()=>{
             let taskId = btn.parentElement.parentElement.id;
+
             if(projectFormStyle == 'none' && taskFormStyle == 'none'){
-                editTask();
+                editTask(projectId, taskId);
                 mainContent.classList.add('content---blur');
             }
             

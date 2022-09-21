@@ -61,10 +61,10 @@ function createEditForm(projectId, taskId){
 }
 
 function editTask(projectId, taskId){
+    let project = Storage.getProject(projectId);
+    let task = project.getTask(taskId);
+
     const main = document.querySelector('main')
-    let toDoList = Storage.getTodoList();
-    let project = toDoList.getProject(projectId);
-    //let task = project.getTask(taskId);
     let editForm = document.createElement('div');
     editForm.classList.add('newform');
     editForm.setAttribute('id', 'editForm');
@@ -76,15 +76,15 @@ function editTask(projectId, taskId){
         </p>
         <div class = "form___content flex___wrapper text-formatting">
             <label for="edit-title">Title(*)</label>
-            <input required = "required" type="text" id="edit-title" name = "edit-title" placeholder="ignore">
+            <input required = "required" type="text" id="edit-title" name = "edit-title" value="${task.getTitle()}">
         </div>
         <div class = "form___content flex___wrapper text-formatting">
             <label for="edit-duedate">Due Date(*)</label>
-            <input type="date" id="edit-duedate" name = "task-duedate">
+            <input type="date" id="edit-duedate" name = "task-duedate" value = "${task.getdueDate()}">
         </div>
         <div class = "form___content flex___wrapper text-formatting">
             <label for="edit-priority">Priority(*)</label>
-            <select required = "optional" name="edit-priority" id="edit-priority">
+            <select required = "optional" name="edit-priority" id="edit-priority" value = "${task.getPriority()}">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
@@ -92,7 +92,7 @@ function editTask(projectId, taskId){
         </div>
         <div class="form___content flex___wrapper text-formatting">
             <label for="edit-status">Status(*)</label>
-            <select name="edit-status" id="edit-status">
+            <select name="edit-status" id="edit-status" value = "${task.getStatus()}">
                 <option value="to-do">To-Do</option>
                 <option value="in-progress">In-Progress</option>
                 <option value="completed">Completed</option>
@@ -101,7 +101,7 @@ function editTask(projectId, taskId){
 
         <div class="button___container">
             <button class = "create" id = 'edit-taskButton' type = 'button'>Edit</button>
-            <button  class = 'cancel' type = 'button' id = 'cancelEdit'>Cancel</button>
+            <button  class = 'cancel' type = 'button' id = 'cancel-btn'>Cancel</button>
         </div>
 
     </form>
@@ -109,15 +109,35 @@ function editTask(projectId, taskId){
    
     main.appendChild(editForm);
 
-    let cancelEditBtn = document.getElementById('cancelEdit');
+    let editBtn = document.getElementById('edit-taskButton')
+    let cancelEditBtn = document.getElementById('cancel-btn');
+    
+    editBtn.addEventListener('click', ()=>{
+        submitEdit(editForm, projectId, task);
+    })
     cancelEditBtn.addEventListener('click', ()=>{
         deleteEditForm(editForm);
     })
 
+
+
 }
 
-function submitEdit(projectId, taskId){
+function submitEdit(editForm, projectId, task){
+    if(validateForm(editForm)){
+        const title = document.getElementById('edit-title').value;
+        const dueDate = document.getElementById('edit-duedate').value;
+        const priority = document.getElementById('edit-priority').value;
+        const status = document.getElementById('edit-status').value;
 
+        task.setTitle(title);
+        task.setdueDate(dueDate);
+        task.setPriority(priority);
+        task.setStatus(status);
+        Storage.editTask(projectId, task);
+        
+        deleteEditForm(editForm);
+    }
 }
 
 

@@ -31,9 +31,15 @@ export default class Storage {
         return todoList;
     }
 
+    static getProject(projectId){
+        const toDoList = Storage.getTodoList();
+        let project = toDoList.getProject(projectId);
+        return project;
+    }
+
     static addProject(project){
-        const todoList = Storage.getTodoList()
-        todoList.addProject(project)
+        const todoList = Storage.getTodoList();
+        todoList.addProject(project);
         Storage.saveTodoList(todoList);
     }
 
@@ -50,6 +56,13 @@ export default class Storage {
     let project = todoList.getProject(projectId)
     project.addTask(task);
     console.log(todoList);
+    Storage.saveTodoList(todoList);
+  }
+
+  static editTask(projectId, task){
+    const todoList = Storage.getTodoList();
+    let project = todoList.getProject(projectId);
+    project.editTask(task);
     Storage.saveTodoList(todoList);
   }
     
