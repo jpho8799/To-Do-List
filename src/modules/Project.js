@@ -31,9 +31,7 @@ export default class Project {
     }
 
     getTask(taskId){
-        return this.tasks.find(task =>{
-            task.getId() == taskId;
-        })
+        return this.tasks.find(task =>task.getId() == taskId)
     }
 
     addTask(newTask){

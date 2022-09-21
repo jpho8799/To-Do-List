@@ -1,5 +1,5 @@
 import Storage from './Storage'
-
+import {editTask} from './Form'
 
 function getProjectList(projectId){
     let toDoList = Storage.getTodoList();
@@ -10,15 +10,8 @@ function getProjectList(projectId){
 
 function toDo(projectId){
     let project = getProjectList(projectId);
-
-    console.log(project);
     let taskList = project.getTasks();
-    console.log(taskList);
-    let toDo =  taskList.filter(task =>task.getStatus() == 'to-do');
-    console.log(toDo);
-    return toDo;
-    
-
+    return taskList.filter(task =>task.getStatus() == 'to-do');
 }
 
 function inProgress(projectId){
@@ -57,16 +50,6 @@ function createTaskElement(task){
     return taskItem;
 }
 
-function editTask(taskId){
-
-}
-function editTaskItem(taskElement, task){
-
-}
-
-function addTask(projectId, task){
-
-}
 
 function deleteTask(taskId){
     let taskItem = document.getElementById(taskId);
@@ -118,6 +101,10 @@ function displaySection(section, sectionList){
     })
 }
 
+function displayEditForm(projectId, taskId){
+
+}
+
 function initMainContentBtn(projectId){
     let deleteBtns = document.querySelectorAll('.deleteTask');
     let editBtns = document.querySelectorAll('.editTask');
@@ -133,8 +120,19 @@ function initMainContentBtn(projectId){
     })
 
     editBtns.forEach(btn =>{
+        const mainContent = document.querySelector('.main___content')
+        const taskForm = document.getElementById('taskForm');
+        const projectForm = document.getElementById('projectForm');
+        const taskFormStyle = window.getComputedStyle(taskForm).display;
+        const projectFormStyle = window.getComputedStyle(projectForm).display;
         btn.addEventListener('click', ()=>{
-
+            let taskId = btn.parentElement.parentElement.id;
+            if(projectFormStyle == 'none' && taskFormStyle == 'none'){
+                editTask();
+                mainContent.classList.add('content---blur');
+            }
+            
+            displayProject(projectId);
         })
     })
 
