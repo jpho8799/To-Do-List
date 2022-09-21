@@ -40,15 +40,13 @@ export default class Project {
     }
 
     editTask(editedTask){
-        this.tasks.find(task =>{
-            if(task.getId == editedTask.getId()){
-                task.setTitle(editedTask.getTitle());
-                task.setdueDate(editedTask.getdueDate());
-                task.setPriority(editedTask.getPriority());
-                task.setStatus(editedTask.getStatus());
-            }
-        })
+        let index = this.tasks.findIndex(task => task.getId() == editedTask.getId());
+        this.tasks[index].setTitle(editedTask.getTitle());
+        this.tasks[index].setdueDate(editedTask.getdueDate());
+        this.tasks[index].setPriority(editedTask.getPriority());
+        this.tasks[index].setStatus(editedTask.getStatus());
     }
+    
     deleteTask(taskId){
         this.tasks = this.tasks.filter(task => task.getId() !== taskId);
     }

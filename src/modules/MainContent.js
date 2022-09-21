@@ -1,5 +1,5 @@
 import Storage from './Storage'
-import {editTask} from './Form'
+import {createEditForm} from './Form'
 
 function getProjectList(projectId){
     let toDoList = Storage.getTodoList();
@@ -74,6 +74,7 @@ function clearProject(){
 }
 
 function displayProject(projectId){
+    console.log("display project");
     const toDoSection = document.getElementById('to-do');
     const inProgressSection = document.getElementById('in-progress');
     const completedSection = document.getElementById('completed');
@@ -101,10 +102,6 @@ function displaySection(section, sectionList){
     })
 }
 
-function displayEditForm(projectId, taskId){
-
-}
-
 function initMainContentBtn(projectId){
     let deleteBtns = document.querySelectorAll('.deleteTask');
     let editBtns = document.querySelectorAll('.editTask');
@@ -129,11 +126,10 @@ function initMainContentBtn(projectId){
             let taskId = btn.parentElement.parentElement.id;
 
             if(projectFormStyle == 'none' && taskFormStyle == 'none'){
-                editTask(projectId, taskId);
                 mainContent.classList.add('content---blur');
+                createEditForm(projectId, taskId);
             }
             
-            displayProject(projectId);
         })
     })
 

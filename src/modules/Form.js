@@ -56,11 +56,9 @@ function initTaskForm(){
     })
     
 }
+
+
 function createEditForm(projectId, taskId){
-
-}
-
-function editTask(projectId, taskId){
     let project = Storage.getProject(projectId);
     let task = project.getTask(taskId);
 
@@ -113,7 +111,7 @@ function editTask(projectId, taskId){
     let cancelEditBtn = document.getElementById('cancel-btn');
     
     editBtn.addEventListener('click', ()=>{
-        submitEdit(editForm, projectId, task);
+        submitEdit(editForm.firstElementChild, projectId, task);
     })
     cancelEditBtn.addEventListener('click', ()=>{
         deleteEditForm(editForm);
@@ -134,9 +132,11 @@ function submitEdit(editForm, projectId, task){
         task.setdueDate(dueDate);
         task.setPriority(priority);
         task.setStatus(status);
+        console.log(task);
         Storage.editTask(projectId, task);
         
         deleteEditForm(editForm);
+        displayProject(projectId);
     }
 }
 
@@ -209,7 +209,6 @@ function initFormBtns(){
             const priority = document.getElementById('task-priority').value;
             const status = document.getElementById('task-status').value;
             const newTask = new Task(title, dueDate, priority, status);
-            console.log(newTask);
             Storage.addTask(projectId, newTask);
             displayProject(projectId);
 
@@ -243,20 +242,6 @@ function validInput(element){
     element.classList.remove('invalid');
 }
 
-function fillTaskForm(projectId, taskId){
-
-    let toDoList = Storage.getTodoList();
-    let project = toDoList.getProject(projectId);
-    let task = project.getTask(taskId);
-
-    let titleInput = document.getElementById('task-title');
-    let projectInput = document.getElementById('project-list');
-    
-    titleInput.textContent = task.getTitle()
-
-
-}
-
 function clearForm(form){
     Array.from(form.elements).forEach(element =>{
         element.value = '';
@@ -269,4 +254,4 @@ function closeForm(form){
 
 
 
-export {initForms, fillTaskForm, editTask};
+export {initForms, createEditForm};
