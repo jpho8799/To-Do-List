@@ -156,10 +156,13 @@ function initplusBtns(){
     const newtaskIcon = document.querySelector('#new-task');
     const projectForm = document.getElementById('projectForm');
     const taskForm = document.getElementById('taskForm');
+    const editForm = document.getElementById('editForm');
+
 
     newprojectIcon.addEventListener('click', ()=>{
+        const editForm = document.getElementById('editForm');
         const taskFormStyle = window.getComputedStyle(taskForm).display;
-        if(taskFormStyle == 'none'){
+        if(taskFormStyle == 'none' && editForm === null){
             projectForm.style.display = 'flex';
             mainContent.classList.add('content---blur');
         }
@@ -167,8 +170,9 @@ function initplusBtns(){
     });
 
     newtaskIcon.addEventListener('click', ()=>{
+        const editForm = document.getElementById('editForm')
         const projectFormStyle = window.getComputedStyle(projectForm).display;
-        if(projectFormStyle == 'none'){
+        if(projectFormStyle == 'none' && editForm === null){
             taskForm.style.display = 'flex';
             mainContent.classList.add('content---blur');
         }

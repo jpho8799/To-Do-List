@@ -118,18 +118,11 @@ function initMainContentBtn(projectId){
 
     editBtns.forEach(btn =>{
         const mainContent = document.querySelector('.main___content')
-        const taskForm = document.getElementById('taskForm');
-        const projectForm = document.getElementById('projectForm');
-        const taskFormStyle = window.getComputedStyle(taskForm).display;
-        const projectFormStyle = window.getComputedStyle(projectForm).display;
+        
         btn.addEventListener('click', ()=>{
             let taskId = btn.parentElement.parentElement.id;
-
-            if(projectFormStyle == 'none' && taskFormStyle == 'none'){
-                mainContent.classList.add('content---blur');
-                createEditForm(projectId, taskId);
-            }
-            
+            mainContent.classList.add('content---blur');
+            createEditForm(projectId, taskId);
         })
     })
 
