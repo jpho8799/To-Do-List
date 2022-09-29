@@ -14,19 +14,26 @@
 ### 🏠 [Live App](https://jpho8799.github.io/To-Do-List/)
 
 ## Built Using 
-<p align="center">
+<p align="start">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=css,html,js" />
   </a>
 </p>
+
+## Features and Functionality
+* Add/Delete Projects
+* Add/Delete/Edit Tasks
+* Keep track of task progress using Kanban styled columns
+* Local Storage using Web API and JSON
+* Responsive UI
+
+
 ## Author
 
 👤 **Josephine Pho**
 
 * Github: [@jpho8799](https://github.com/jpho8799)
 * LinkedIn: [@Josephine Pho](https://linkedin.com/in/Josephine-Pho)
-
-hello
 
 ## Show your support
 
