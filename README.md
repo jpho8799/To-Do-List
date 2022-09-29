@@ -14,13 +14,19 @@
 ### 🏠 [Live App](https://jpho8799.github.io/To-Do-List/)
 
 ## Built Using 
-[![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=3)](https://skillicons.dev)
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=css,html,js" />
+  </a>
+</p>
 ## Author
 
 👤 **Josephine Pho**
 
 * Github: [@jpho8799](https://github.com/jpho8799)
 * LinkedIn: [@Josephine Pho](https://linkedin.com/in/Josephine-Pho)
+
+hello
 
 ## Show your support
 
