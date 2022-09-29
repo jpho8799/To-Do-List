@@ -11,21 +11,15 @@
 
 > Kanban styled To-Do-List inspired by the Odin Project To-Do-List project
 
-### 🏠 [Homepage](https://jpho8799.github.io/To-Do-List/)
+### 🏠 [Live App](https://jpho8799.github.io/To-Do-List/)
 
-## Install
-
-```sh
-npm install
-```
 
 ## Author
 
 👤 **Josephine Pho**
 
-* Website: https://www.linkedin.com/in/josephine-pho/
 * Github: [@jpho8799](https://github.com/jpho8799)
-* LinkedIn: [@Josephine Pho](https://linkedin.com/in/Josephine Pho)
+* LinkedIn: [@Josephine Pho](https://linkedin.com/in/Josephine-Pho)
 
 ## Show your support
 
